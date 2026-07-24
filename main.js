@@ -159,6 +159,62 @@
     nums.forEach(function (n) { io.observe(n); });
   }
 
+  /* ---------- Page transition fade ---------- */
+  function initPageTransitions() {
+    requestAnimationFrame(function () {
+      document.body.classList.add("page-loaded");
+    });
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) {
+        document.body.classList.remove("page-exit");
+        document.body.classList.add("page-loaded");
+      }
+    });
+
+    document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+      if (link.target === "_blank") return;
+      if (link.hostname && link.hostname !== window.location.hostname) return;
+      link.addEventListener("click", function (e) {
+        var href = link.getAttribute("href");
+        if (!href || href.charAt(0) === "#") return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        document.body.classList.remove("page-loaded");
+        document.body.classList.add("page-exit");
+        setTimeout(function () {
+          window.location.href = href;
+        }, 300);
+      });
+    });
+  }
+
+  /* ---------- Journey marker (scroll-linked) ---------- */
+  function initJourneyMarker() {
+    var svg = document.querySelector(".journey-svg");
+    if (!svg) return;
+    var path = svg.querySelector("path.route");
+    var marker = svg.querySelector(".journey-marker");
+    if (!path || !marker) return;
+    var len = path.getTotalLength();
+
+    function update() {
+      var rect = svg.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var start = vh * 0.85;
+      var end = vh * 0.2;
+      var total = rect.height + (start - end);
+      var traveled = start - rect.top;
+      var progress = total > 0 ? traveled / total : 0;
+      progress = Math.max(0, Math.min(1, progress));
+      var pt = path.getPointAtLength(progress * len);
+      marker.setAttribute("cx", pt.x);
+      marker.setAttribute("cy", pt.y);
+    }
+    document.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initRail();
     initDrawer();
@@ -167,5 +223,7 @@
     initReveal();
     initSkillBars();
     initCountUp();
+    initPageTransitions();
+    initJourneyMarker();
   });
 })();

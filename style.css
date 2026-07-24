@@ -67,6 +67,11 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
+/* ---- Page transition fade ---- */
+body { opacity: 0; transition: opacity .32s var(--ease); }
+body.page-loaded { opacity: 1; }
+body.page-exit { opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
@@ -355,6 +360,16 @@ footer.site-footer {
 .journey-node:nth-of-type(5) { --nd: 1.3s; }
 .journey-svg.is-visible .journey-node { opacity: 1; transform: scale(1); }
 
+.journey-marker {
+  fill: var(--indigo);
+  stroke: #fff;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 2px 8px rgba(111,115,206,0.55));
+  opacity: 0;
+  transition: opacity .4s var(--ease);
+}
+.journey-svg.is-visible .journey-marker { opacity: 1; }
+
 /* ---- Skill bars ---- */
 .skillbar-track { height: 8px; border-radius: 100px; background: var(--mist-2); overflow: hidden; }
 .skillbar-fill { height: 100%; border-radius: 100px; width: 0%; background: linear-gradient(90deg, var(--dusty), var(--indigo)); transition: width 1.1s var(--ease); }
@@ -508,7 +523,8 @@ footer.site-footer {
 .browser-frame .chrome { height: 32px; background: var(--mist-2); display: flex; align-items: center; gap: 6px; padding: 0 14px; }
 .browser-frame .chrome span { width: 8px; height: 8px; border-radius: 50%; background: var(--hairline); display: inline-block; }
 .browser-frame .shot { max-height: 460px; overflow: hidden; position: relative; }
-.browser-frame .shot img { width: 100%; object-fit: cover; object-position: top; }
+.browser-frame .shot img { width: 100%; object-fit: cover; object-position: top; transition: transform .6s var(--ease); }
+.browser-frame:hover .shot img { transform: scale(1.06); }
 .project-idx { font-family: var(--font-display); font-weight: 800; font-size: 13px; color: var(--dusty); letter-spacing: 0.08em; margin-bottom: 10px; }
 .project-role { display:inline-block; margin: 14px 0 18px; }
 .feature-list { margin: 18px 0 22px; }
