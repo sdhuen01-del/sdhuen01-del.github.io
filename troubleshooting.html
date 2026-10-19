@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>트러블슈팅 — 김도철 포트폴리오</title>
-<meta name="description" content="DB 연결 오류부터 인프라 마이그레이션까지, 직접 부딪히고 해결한 문제들">
+<meta name="description" content="DB 연결 오류, 인프라 마이그레이션, 브라우저 자동화와 AI 결과 검증까지 — 직접 부딪히고 해결한 문제들">
 <link rel="stylesheet" href="style.css">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C96HWTFPPH"></script>
@@ -63,7 +63,7 @@
               <div>
                 <div class="case-label">문제</div>
                 <p><code class="inline">pgbouncer=true</code> 쿼리 파라미터가 psycopg v3와 충돌하며
-                <code class="inline">sqlalchemy.exc.ProgrammingError</code>가 발생했습니다.</p>
+                <code class="inline">sqlalchemy.exc.ProgrammingError</code>가 발생했습니다. PgBouncer 트랜잭션 모드는 prepared statement를 지원하지 않는데, psycopg v3가 이를 자동으로 사용하면서 충돌한 것이 원인이었습니다.</p>
               </div>
               <div>
                 <div class="case-label">해결</div>
@@ -74,7 +74,7 @@
           </div>
 
           <div class="card case-card dark reveal">
-            <div class="case-head"><span class="case-num">Case B</span><h3 class="h3">종합 버그 픽스 세션</h3></div>
+            <div class="case-head"><span class="case-num">Case B</span><h3 class="h3">운영 중 발견된 6가지 버그 일괄 해결</h3></div>
             <div class="case-grid">
               <div>
                 <div class="case-label">발견된 이슈</div>
@@ -118,6 +118,51 @@
             </div>
           </div>
 
+          <div class="card case-card dark reveal">
+            <div class="case-head"><span class="case-num">Case D</span><h3 class="h3">자동 발행 시 인용구 다음 문단이 사라지는 문제</h3></div>
+            <div class="case-grid">
+              <div>
+                <div class="case-label">문제 · 원인</div>
+                <p>네이버 에디터에 글을 자동 입력하면 인용구 바로 다음 문단만 에러 없이 통째로 사라졌습니다.
+                실측해 보니 <code class="inline">.se-component</code>는 화면 전체 폭이고 실제 글 칸은 그 안의
+                <code class="inline">.se-component-content</code>였습니다. 컴포넌트 기준 좌표로 클릭하면 글 칸 바깥 여백이 눌려
+                캐럿이 숨은 <code class="inline">span.se-blind</code>로 가고, 입력이 허공으로 사라지고 있었습니다.</p>
+              </div>
+              <div>
+                <div class="case-label">해결 · 배운 점</div>
+                <p>클릭 좌표를 <code class="inline">.se-component-content</code> 기준으로 바꾸고, 캐럿 위치를 읽어 새 문단이
+                생겼는지 확인한 뒤 입력하도록 했습니다. 로컬 테스트 환경은 폭이 좁아 이 결함을 잡지 못했기 때문에,
+                실제 에디터에 연습 글을 넣고 스크린샷으로 확인하는 단계를 검증 절차에 추가했습니다.</p>
+              </div>
+            </div>
+            <div class="stack-tags" style="margin-top:22px">
+              <span class="tag">Playwright</span>
+              <span class="tag">DOM 좌표 실측</span>
+              <span class="tag">네이버 스마트에디터</span>
+            </div>
+          </div>
+          <div class="card case-card reveal">
+            <div class="case-head"><span class="case-num">Case E</span><h3 class="h3">AI가 "성공"이라고 답한 빈 결과 걸러내기</h3></div>
+            <div class="case-grid">
+              <div>
+                <div class="case-label">문제 · 원인</div>
+                <p>사진 판정 결과가 <code class="inline">{"shape":"","color":""}</code>처럼 비어 있는데도 정상 응답으로 처리됐습니다.
+                원인은 사진 경로의 띄어쓰기와 큰 이미지 크기였습니다. 첨부에 실패한 AI가 형식만 맞춘 빈 답을 내고 있었습니다.
+                카드뉴스 숫자에서도 AI가 틀린 변환 방향(× / ÷)을 쓰는 경우가 있었습니다.</p>
+              </div>
+              <div>
+                <div class="case-label">해결 · 배운 점</div>
+                <p>사진은 띄어쓰기 없는 임시 폴더로 복사해 넘기고, 답에 "읽지 못함" 류 문장이 있으면 실패로 처리했습니다.
+                숫자는 BigInt 분수 계산기로 식 · 단위 · 변환 흐름을 직접 검산하고, 틀린 줄은 AI에게 다시 고치게 한 뒤 그래도 틀리면 뺐습니다.
+                "형식이 맞다"와 "내용이 맞다"는 다르다는 것을 배웠습니다.</p>
+              </div>
+            </div>
+            <div class="stack-tags" style="margin-top:22px">
+              <span class="tag">Zod 스키마 검증</span>
+              <span class="tag">BigInt 분수 연산</span>
+              <span class="tag">단위 시험 코드</span>
+            </div>
+          </div>
         </div>
       </section>
 

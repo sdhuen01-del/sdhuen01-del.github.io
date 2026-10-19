@@ -544,6 +544,7 @@ footer.site-footer {
 .case-head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
 .case-num { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; color: var(--dusty); }
 .case-card.dark .case-num { color: var(--dusty-light); }
+.case-card.dark .h3 { color: #fff; }
 .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .case-label { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--indigo); margin-bottom: 10px; }
 .case-card.dark .case-label { color: var(--indigo-light); }
@@ -614,4 +615,38 @@ code.inline { background: rgba(111,115,206,0.1); color: var(--indigo); padding: 
   .level-row { grid-template-columns: 100px 1fr 34px; gap: 10px; }
   .contact-card { padding: 40px 22px; }
   .page-hero .stage-num { font-size: 26vw; top: 90px; }
+}
+
+/* =====================================================================
+   Work — 프로젝트 그룹 헤더 + 현장 프로젝트용 CSS 목업
+   (실제 스크린샷이 생기면 .mock-* 블록을 browser-frame + img로 교체)
+   ===================================================================== */
+.work-group-head { margin: 0 0 56px; }
+.work-group-head .h3 { margin-top: 2px; }
+.work-group-head p { margin-top: 10px; color: var(--ink-soft); font-size: 15px; max-width: 560px; }
+.work-group + .work-group { margin-top: 40px; padding-top: 90px; border-top: 1px solid var(--hairline); }
+
+/* ---- HAIR BAMI : 실제 모바일 캡처 2장 (폰 프레임) ---- */
+.mock-stage {
+  border-radius: 18px; padding: 40px 20px;
+  background: linear-gradient(160deg, var(--mist) 0%, var(--mist-2) 100%);
+  border: 1px solid var(--hairline);
+  display: flex; justify-content: center; align-items: flex-start; gap: 18px;
+}
+.mock-phone {
+  width: 46%; max-width: 220px; border-radius: 28px; padding: 7px;
+  background: var(--charcoal); box-shadow: var(--shadow-card);
+  transition: transform .6s var(--ease);
+}
+.mock-phone + .mock-phone { margin-top: 38px; }
+.mock-phone img { display: block; width: 100%; border-radius: 22px; }
+.mock-stage:hover .mock-phone:first-child { transform: translateY(-6px) rotate(-1.5deg); }
+.mock-stage:hover .mock-phone + .mock-phone { transform: translateY(-6px) rotate(1.5deg); }
+
+@media (max-width: 640px) {
+  .mock-stage { padding: 32px 16px; }
+  .mock-stage { gap: 12px; }
+  .mock-phone { border-radius: 22px; padding: 5px; }
+  .mock-phone img { border-radius: 18px; }
+  .work-group + .work-group { padding-top: 64px; }
 }
