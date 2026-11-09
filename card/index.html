@@ -362,13 +362,13 @@
   <!-- ================= 수업 안내 ================= -->
   <!-- ================= 섹션 탭 ================= -->
   <nav class="tabs" role="tablist" aria-label="명함 내용">
-    <button role="tab" id="t-info" aria-controls="info" data-tab="info">수업 안내</button>
-    <button role="tab" id="t-teach" aria-controls="teach" data-tab="teach">지도 방식</button>
-    <button role="tab" id="t-flow" aria-controls="flow" data-tab="flow">수업 진행</button>
-    <button role="tab" id="t-more" aria-controls="more" data-tab="more">더 알아보기</button>
+    <button role="tab" id="t-info" aria-controls="panel-info" data-tab="info">수업 안내</button>
+    <button role="tab" id="t-teach" aria-controls="panel-teach" data-tab="teach">지도 방식</button>
+    <button role="tab" id="t-flow" aria-controls="panel-flow" data-tab="flow">수업 진행</button>
+    <button role="tab" id="t-more" aria-controls="panel-more" data-tab="more">더 알아보기</button>
   </nav>
 
-  <section class="card panel" id="info" role="tabpanel" aria-labelledby="t-info">
+  <section class="card panel" id="panel-info" role="tabpanel" aria-labelledby="t-info">
     <h2 class="card-title"><i></i>수업 및 상담 안내</h2>
     <dl class="info">
       <div class="info-row"><dt>대상</dt><dd>초등 4학년 ~ 중학교 3학년</dd></div>
@@ -383,7 +383,7 @@
   </section>
 
   <!-- ================= 전문 지도 시스템 ================= -->
-  <section class="card panel" id="teach" role="tabpanel" aria-labelledby="t-teach">
+  <section class="card panel" id="panel-teach" role="tabpanel" aria-labelledby="t-teach">
     <h2 class="card-title"><i></i>10년 경력의 전문 수학 지도</h2>
     <p style="font-size:13.5px;color:var(--ink-soft);margin:-5px 0 15px;line-height:1.65">
       개념의 원리부터 서술형 · 수리논술 기초까지, 학생의 수준과 목표에 맞춰 수학적 사고의 전 과정을 지도합니다.
@@ -414,7 +414,7 @@
 
 
   <!-- ================= 실제 수업 진행 방식 ================= -->
-  <section class="card lesson-flow panel" id="flow" role="tabpanel" aria-labelledby="t-flow">
+  <section class="card lesson-flow panel" id="panel-flow" role="tabpanel" aria-labelledby="t-flow">
     <h2 class="card-title"><i></i>실제 수업은 이렇게 진행됩니다</h2>
     <p class="lesson-intro">
       강사가 다양한 방식으로 개념을 설명하고, 학생도 자신의 이해와 풀이 과정을 직접 설명하며 함께 확인합니다.
@@ -454,7 +454,7 @@
   </section>
 
   <!-- ================= 더 알아보기 ================= -->
-  <section class="card panel" id="more" role="tabpanel" aria-labelledby="t-more">
+  <section class="card panel" id="panel-more" role="tabpanel" aria-labelledby="t-more">
     <h2 class="card-title"><i></i>더 알아보기</h2>
     <div class="links">
       <a class="link" href="https://blog.naver.com/kdcm3164" target="_blank" rel="noopener">
@@ -528,7 +528,7 @@ if (CONFIG.kakaoChatUrl) {
 }
 
 function pageUrl(){
-  return location.protocol.startsWith('http') ? location.href.split('#')[0] : CONFIG.cardUrl;
+  return CONFIG.cardUrl;
 }
 
 function showToast(msg){
@@ -572,13 +572,12 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQR(); }
     const nav=document.createElement('div'); nav.className='panel-nav';
     if(i>0){const b=document.createElement('button');b.type='button';b.textContent='‹ '+names[ids[i-1]];b.onclick=()=>show(ids[i-1],true);nav.appendChild(b);}
     if(i<ids.length-1){const b=document.createElement('button');b.type='button';b.textContent=names[ids[i+1]]+' ›';b.onclick=()=>show(ids[i+1],true);nav.appendChild(b);}
-    document.getElementById(id).appendChild(nav);
+    document.getElementById('panel-'+id).appendChild(nav);
   });
   function show(id,scroll){
     if(!ids.includes(id)) id=ids[0];
     tabs.forEach(t=>{const on=t.dataset.tab===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;});
-    ids.forEach(x=>document.getElementById(x).classList.toggle('is-active',x===id));
-    if(history.replaceState) history.replaceState(null,'','#'+id);
+    ids.forEach(x=>document.getElementById('panel-'+x).classList.toggle('is-active',x===id));
     if(scroll){const bar=document.querySelector('.tabs');window.scrollTo({top:bar.getBoundingClientRect().top+window.scrollY-0,behavior:'smooth'});}
   }
   tabs.forEach((t,i)=>{
@@ -588,6 +587,9 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQR(); }
     });
   });
   show(location.hash.slice(1),false);
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.scrollTo(0,0);
+  window.addEventListener('load',()=>window.scrollTo(0,0));
   window.addEventListener('hashchange',()=>show(location.hash.slice(1),false));
 })();
 </script>
