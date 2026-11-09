@@ -650,3 +650,7 @@ code.inline { background: rgba(111,115,206,0.1); color: var(--indigo); padding: 
   .mock-phone img { border-radius: 18px; }
   .work-group + .work-group { padding-top: 64px; }
 }
+
+/* Story — RETURN 섹션: 카드 3개를 한 줄로 */
+.style-grid.three { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 960px) { .style-grid.three { grid-template-columns: 1fr; } }
