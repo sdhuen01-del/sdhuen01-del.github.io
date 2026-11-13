@@ -694,3 +694,5 @@ code.inline { background: rgba(111,115,206,0.1); color: var(--indigo); padding: 
 @media (max-width: 760px) { .promise-grid { grid-template-columns: 1fr; } .stack-more summary { padding: 18px; } .stack-more-body { padding: 0 18px 20px; } }
 .core-grid.two { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 960px) { .core-grid.two { grid-template-columns: 1fr; } }
+
+.contact-kakao { background: #FEE500 !important; color: #191919 !important; border-color: #FEE500 !important; }
