@@ -674,3 +674,23 @@ code.inline { background: rgba(111,115,206,0.1); color: var(--indigo); padding: 
 
 /* 한글 제목은 단어 단위로만 줄바꿈 */
 .h1, .h2, .h3, .lede { word-break: keep-all; overflow-wrap: break-word; }
+
+/* Skills — 학부모용 약속 목록 · 기술 접기 */
+.promise-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.promise { display: flex; gap: 16px; align-items: flex-start; background: var(--paper); border: 1px solid var(--hairline); border-radius: var(--radius-m); padding: 24px 22px; }
+.promise-ic { flex: none; width: 34px; height: 34px; border-radius: 10px; background: rgba(111,115,206,0.10); color: var(--indigo); display: grid; place-items: center; }
+.promise-ic svg { width: 18px; height: 18px; }
+.promise h3 { font-size: 16.5px; font-weight: 800; color: var(--charcoal); margin-bottom: 6px; word-break: keep-all; }
+.promise p { font-size: 14.5px; line-height: 1.7; color: var(--ink-soft); word-break: keep-all; }
+.stack-more { border: 1px solid var(--hairline); border-radius: var(--radius-m); background: var(--paper); }
+.stack-more summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 24px; font-size: 14.5px; color: var(--ink-soft); }
+.stack-more summary::-webkit-details-marker { display: none; }
+.stack-more summary b { color: var(--charcoal); }
+.stack-more-ic { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--mist); display: grid; place-items: center; font-weight: 700; color: var(--indigo); transition: transform .25s ease; }
+.stack-more[open] .stack-more-ic { transform: rotate(45deg); }
+.stack-more-body { padding: 0 24px 24px; }
+.stack-more-body p { font-size: 14px; color: var(--ink-soft); margin-bottom: 14px; }
+.stack-more-link { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 700; color: var(--indigo); }
+@media (max-width: 760px) { .promise-grid { grid-template-columns: 1fr; } .stack-more summary { padding: 18px; } .stack-more-body { padding: 0 18px 20px; } }
+.core-grid.two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 960px) { .core-grid.two { grid-template-columns: 1fr; } }
