@@ -661,3 +661,16 @@ code.inline { background: rgba(111,115,206,0.1); color: var(--indigo); padding: 
 .contact-links a { display: inline-flex; align-items: center; gap: 6px; }
 .contact-card > div:has(> .contact-email) + .contact-phone .contact-email,
 .contact-phone .contact-email { margin-top: -14px; font-size: clamp(1.1rem, 2.4vw, 1.5rem); padding: 14px 28px; }
+
+/* Teaching — 수업 이력 페이지 */
+.teach-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.teach-chips span { font-size: 14px; color: var(--ink-soft); background: #fff; border: 1px solid var(--hairline); border-radius: 100px; padding: 8px 16px; }
+.teach-chips b { color: var(--indigo); margin-right: 4px; }
+.case-card:not(.dark) .fix-list li { color: var(--ink-soft); }
+.case-card:not(.dark) .fix-list li::before { color: var(--indigo); }
+.case-card.dark .exp-connect { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.88); border-color: rgba(255,255,255,0.15); }
+.case-card.dark .exp-connect b { color: #fff; }
+@media (max-width: 760px) { .case-grid { grid-template-columns: 1fr; gap: 18px; } .case-card { padding: 28px 22px; } }
+
+/* 한글 제목은 단어 단위로만 줄바꿈 */
+.h1, .h2, .h3, .lede { word-break: keep-all; overflow-wrap: break-word; }

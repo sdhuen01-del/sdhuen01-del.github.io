@@ -7,9 +7,9 @@
   var PAGES = [
     { id: "home", href: "index.html", label: "Home" },
     { id: "story", href: "story.html", label: "Story" },
+    { id: "teaching", href: "teaching.html", label: "Teaching" },
     { id: "skills", href: "skills.html", label: "Skills" },
     { id: "work", href: "work.html", label: "Work" },
-    { id: "troubleshooting", href: "troubleshooting.html", label: "Troubleshooting" },
     { id: "goals", href: "goals.html", label: "Goals" },
     { id: "contact", href: "contact.html", label: "Contact" }
   ];
