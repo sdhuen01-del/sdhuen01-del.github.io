@@ -1,168 +1,599 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김도철 — 수학 선생님 × AI 개발자 포트폴리오</title>
-<meta name="description" content="수학 강사에서 시작해 자영업, 생산직, AI 개발을 거쳐 다시 수학 강사로 돌아온 김도철의 포트폴리오">
-<link rel="stylesheet" href="style.css">
-<noscript><style>body{opacity:1 !important}</style></noscript>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C96HWTFPPH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-C96HWTFPPH');
-</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>김도철 · 올(All) 수</title>
+<meta name="description" content="올(All) 수 김도철 원장 · 수학 지도 경력 10년 · 초4~중3 수학">
+<meta name="theme-color" content="#1E2A47">
+<!-- 카카오톡·문자로 링크를 보낼 때 보이는 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="김도철 · 올(All) 수">
+<meta property="og:description" content="올바른 수학을 지도하다. 올바른 공부습관을 지도하다. · 김도철 원장 · 초4~중3 수학">
+<meta property="og:url" content="https://sdhuen01-del.github.io/card/">
+<meta property="og:image" content="https://sdhuen01-del.github.io/card/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --navy:#233B63;
+    --navy-2:#42618D;
+    --ink:#203653;
+    --ink-soft:#65758D;
+    --bg:#F3F7FD;
+    --card:#FFFFFF;
+    --line:#E2EAF5;
+    --sky:#EAF2FF;
+    --sky-ink:#356CB5;
+    --sun:#DCEAFF;
+    --sun-soft:#F0F4FB;
+    --mint:#DDF5EC;
+    --mint-ink:#1F8A66;
+    --coral-soft:#FFE7E2;
+    --coral-ink:#D9573F;
+    --shadow:0 12px 30px rgba(35,59,99,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--bg)}
+  body{
+    font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+    color:var(--ink);background:var(--bg);
+    -webkit-font-smoothing:antialiased;line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+  .wrap{max-width:460px;margin:0 auto;padding:16px 16px calc(28px + env(safe-area-inset-bottom))}
 
+  /* ---------- 명함 앞면 (네이비) ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:linear-gradient(145deg,#29466F 0%,#456A9B 58%,#6689B5 100%);
+    color:#fff;border-radius:26px;padding:28px 24px 24px;box-shadow:var(--shadow);
+  }
+  .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
+  .hero::before{width:210px;height:210px;right:-75px;top:-90px;background:rgba(220,234,255,.20)}
+  .hero::after{width:150px;height:150px;left:-55px;bottom:-65px;background:rgba(255,255,255,.12)}
+  .hero-top{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+  .logo{
+    width:64px;height:64px;border-radius:18px;flex:none;background:#fff;
+    display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 16px rgba(0,0,0,.18);
+  }
+  .logo img{width:100%;height:100%;object-fit:contain;padding:6px}
+  .logo-fallback{font-weight:900;font-size:19px;color:var(--navy);letter-spacing:-.04em}
+  .logo-fallback b{color:var(--sky-ink)}
+  .brand{font-size:13px;font-weight:800;color:#E5F0FF;letter-spacing:.04em}
+  .brand-sub{font-size:13px;color:rgba(255,255,255,.7);margin-top:2px}
+  .name{position:relative;z-index:1;margin-top:22px;font-size:30px;font-weight:800;letter-spacing:-.03em}
+  .name small{font-size:15px;font-weight:600;color:rgba(255,255,255,.75);margin-left:6px;letter-spacing:0}
+  .role{position:relative;z-index:1;display:inline-block;margin-top:9px;font-size:12.5px;font-weight:750;
+    color:#24446F;background:#EAF2FF;padding:7px 13px;border-radius:100px;letter-spacing:-.01em}
+  .tagline{position:relative;z-index:1;margin-top:14px;font-size:14.5px;color:rgba(255,255,255,.88);line-height:1.6}
+
+  /* 빠른 연락 4버튼 */
+  .quick{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+  .quick a{
+    display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 0 10px;
+    border-radius:16px;background:rgba(255,255,255,.10);font-size:12px;font-weight:600;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .quick a:active{transform:scale(.96)}
+  .quick a:hover{background:rgba(255,255,255,.18)}
+  .quick svg{width:22px;height:22px;stroke:#fff}
+
+  /* ---------- 메인 버튼 ---------- */
+  .actions{display:grid;gap:10px;margin-top:14px}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    min-height:54px;border-radius:16px;font-size:15.5px;font-weight:700;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .btn:active{transform:scale(.98)}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-save{background:#DCEAFF;color:#203E68;box-shadow:0 8px 18px rgba(53,108,181,.16)}
+  .btn-kakao{background:#FEE500;color:#191919}
+  .btn-kakao.is-off{background:#F1F1F1;color:#9A9A9A;pointer-events:none}
+  .btn-kakao small{font-size:12px;font-weight:600;opacity:.8}
+
+  /* ---------- 카드 공통 ---------- */
+  .card{background:var(--card);border-radius:22px;padding:22px 20px;margin-top:14px;box-shadow:var(--shadow)}
+  .card-title{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;margin-bottom:14px}
+  .card-title i{width:8px;height:8px;border-radius:3px;background:var(--sky-ink);display:inline-block}
+
+  /* 수업 안내 */
+  .info{display:grid;gap:0}
+  .info-row{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:14.5px}
+  .info-row:first-child{border-top:0;padding-top:0}
+  .info-row dt{flex:none;width:44px;font-weight:700;color:var(--ink-soft);font-size:13.5px;padding-top:1px}
+  .info-row dd{flex:1;font-weight:600}
+  .info-row dd span{display:block;font-size:13px;font-weight:500;color:var(--ink-soft);margin-top:2px}
+  .map-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;min-height:46px;
+    border-radius:14px;background:var(--sky);color:var(--sky-ink);font-size:14px;font-weight:700;
+  }
+  .map-btn svg{width:18px;height:18px}
+
+  /* 수업 특징 */
+  .features{display:grid;gap:10px}
+  .feat{border:1px solid rgba(53,108,181,.07)}
+  .feat{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px}
+  .feat:nth-child(1){background:#EAF2FF}
+  .feat:nth-child(2){background:#EEF4FC}
+  .feat:nth-child(3){background:#E8F1FA}
+  .feat:nth-child(4){background:#F0F4FB}
+  .feat:nth-child(5){background:#EAF0FA}
+  .feat-ic{flex:none;width:40px;height:40px;border-radius:13px;background:#fff;display:grid;place-items:center;box-shadow:0 2px 7px rgba(35,59,99,.06)}
+  .feat-ic svg{width:20px;height:20px}
+  .feat:nth-child(1) .feat-ic svg{stroke:#356CB5}
+  .feat:nth-child(2) .feat-ic svg{stroke:#42618D}
+  .feat:nth-child(3) .feat-ic svg{stroke:#315D91}
+  .feat:nth-child(4) .feat-ic svg{stroke:#5476A4}
+  .feat:nth-child(5) .feat-ic svg{stroke:#29466F}
+  .feat b{color:#203653}
+  .feat p{line-height:1.6}
+  .feat b{display:block;font-size:14.5px}
+  .feat p{font-size:13px;color:var(--ink-soft);margin-top:2px}
+
+  /* 링크 */
+  .links{display:grid;gap:8px}
+  .link{
+    display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:14px;
+    border:1px solid var(--line);font-size:14.5px;font-weight:700;transition:border-color .2s ease,background .2s ease;
+  }
+  .link:hover{border-color:#C6D3EA;background:#FAFCFF}
+  .link-ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+  .link-ic svg{width:18px;height:18px}
+  .link span.sub{display:block;font-size:13px;font-weight:500;color:var(--ink-soft)}
+  .link .arrow{margin-left:auto;color:#A6B2C9;font-size:18px}
+  .ic-blog{background:#E6F7EC}.ic-blog svg{stroke:#03A94D}
+  .ic-insta{background:var(--coral-soft)}.ic-insta svg{stroke:var(--coral-ink)}
+  .ic-web{background:var(--sky)}.ic-web svg{stroke:var(--sky-ink)}
+
+  /* 하단 공유 */
+  .share{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  .share button{
+    display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:16px;
+    background:#29466F;color:#fff;font-size:14.5px;font-weight:700;
+  }
+  .share button.light{background:#fff;color:var(--navy);box-shadow:var(--shadow)}
+  .share svg{width:18px;height:18px}
+  .foot{text-align:center;font-size:13px;color:#9AA6BD;margin-top:18px}
+
+  /* QR 모달 */
+  .overlay{position:fixed;inset:0;background:rgba(20,28,48,.55);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
+  .overlay.open{display:flex}
+  .modal{background:#fff;border-radius:24px;padding:26px 22px 22px;width:100%;max-width:320px;text-align:center;animation:pop .22s ease}
+  @keyframes pop{from{transform:scale(.94);opacity:0}to{transform:none;opacity:1}}
+  .modal h3{font-size:17px;font-weight:800}
+  .modal p{font-size:13px;color:var(--ink-soft);margin-top:4px}
+  #qr{display:grid;place-items:center;margin:18px auto 6px;padding:12px;border-radius:16px;background:var(--bg);width:fit-content}
+  #qr img{display:block;width:200px;height:200px;border-radius:8px}
+  .modal .close{margin-top:14px;width:100%;min-height:46px;border-radius:14px;background:var(--navy);color:#fff;font-weight:700}
+
+  .toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translate(-50%,12px);
+    background:var(--navy);color:#fff;font-size:13.5px;font-weight:600;padding:11px 18px;border-radius:100px;
+    opacity:0;pointer-events:none;transition:all .25s ease;z-index:60;white-space:nowrap}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @media (max-width:360px){
+    .name{font-size:26px}
+    .quick a{font-size:11px}
+  }
+
+    .lesson-intro {
+      color: var(--ink-soft);
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin: -5px 0 16px;
+    }
+    .lesson-panel {
+      border: 1px solid #dce6f2;
+      background: linear-gradient(145deg, #f8fbff, #f1f6fc);
+      border-radius: 15px;
+      padding: 15px;
+      margin-top: 12px;
+    }
+    .lesson-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin-bottom: 13px;
+    }
+    .lesson-number {
+      display: flex;
+      flex: 0 0 32px;
+      width: 32px;
+      height: 32px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      color: #fff;
+      background: #315987;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .lesson-heading b {
+      display: block;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.45;
+      margin: 1px 0 3px;
+    }
+    .lesson-heading p {
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .lesson-steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 7px;
+    }
+    .lesson-steps li {
+      position: relative;
+      padding: 9px 11px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid #e5edf6;
+    }
+    .lesson-steps li span {
+      display: block;
+      color: #294f7b;
+      font-size: 14px;
+      font-weight: 750;
+      margin-bottom: 2px;
+    }
+    .lesson-steps li small {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+
+  /* ---------- 밝은 파스텔 포인트 ---------- */
+  :root{
+    --p-lemon:#FFF2B8; --p-lemon-ink:#8A6A00;
+    --p-mint:#D8F5E8;  --p-mint-ink:#23805F;
+    --p-peach:#FFE2D4; --p-peach-ink:#B45A35;
+    --p-lilac:#ECE5FF; --p-lilac-ink:#6A4FC0;
+    --p-sky:#DDEEFF;   --p-sky-ink:#2F6AB0;
+  }
+  .role{background:var(--p-lemon);color:#5A4600}
+  .feat:nth-child(1){background:var(--p-sky)}
+  .feat:nth-child(2){background:var(--p-mint)}
+  .feat:nth-child(3){background:var(--p-lemon)}
+  .feat:nth-child(4){background:var(--p-peach)}
+  .feat:nth-child(5){background:var(--p-lilac)}
+  .feat{border-color:transparent}
+  .feat:nth-child(1) .feat-ic svg{stroke:var(--p-sky-ink)}
+  .feat:nth-child(2) .feat-ic svg{stroke:var(--p-mint-ink)}
+  .feat:nth-child(3) .feat-ic svg{stroke:var(--p-lemon-ink)}
+  .feat:nth-child(4) .feat-ic svg{stroke:var(--p-peach-ink)}
+  .feat:nth-child(5) .feat-ic svg{stroke:var(--p-lilac-ink)}
+  .lesson-panel:nth-of-type(1) .lesson-number{background:var(--p-mint);color:var(--p-mint-ink)}
+  .lesson-panel:nth-of-type(2) .lesson-number{background:var(--p-peach);color:var(--p-peach-ink)}
+  .card-title i{background:linear-gradient(135deg,#FFD66B,#FF9FB2)}
+  .hero::before{background:rgba(255,242,184,.22)}
+  .hero::after{background:rgba(216,245,232,.18)}
+  .role{font-size:13.5px}
+  .btn-kakao small{font-size:13px}
+  .lesson-number{font-size:13px}
+
+  /* ---------- 섹션 탭 ---------- */
+  .tabs{
+    position:sticky;top:0;z-index:20;margin:16px -16px 0;padding:10px 16px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
+    background:rgba(243,247,253,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  }
+  .tabs button{
+    min-height:42px;border-radius:12px;font-size:13.5px;font-weight:700;color:var(--ink-soft);
+    background:#fff;box-shadow:0 2px 8px rgba(35,59,99,.06);transition:all .2s ease;white-space:nowrap;
+  }
+  .tabs button[aria-selected="true"]{background:var(--navy);color:#fff;box-shadow:0 6px 14px rgba(35,59,99,.22)}
+  .panel{display:none;margin-top:10px;scroll-margin-top:72px}
+  .panel.is-active{display:block;animation:panelIn .25s ease}
+  @keyframes panelIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .panel-nav{display:flex;justify-content:space-between;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+  .panel-nav button{font-size:13.5px;font-weight:700;color:var(--p-sky-ink,#2F6AB0);padding:8px 4px}
+  .panel-nav button:only-child{margin-left:auto}
+  @media (max-width:360px){ .tabs button{font-size:12.5px} }
+  .logo img{padding:4px}
+  .tagline.slogan{font-size:16.5px;font-weight:700;color:#fff;line-height:1.65;letter-spacing:-.01em}
+  .legal{text-align:center;font-size:13px;color:#9AA6BD;line-height:1.6;margin-top:6px}
+</style>
 </head>
-<body data-page="home">
-    <nav class="rail" aria-label="주요 내비게이션">
+<body>
+<main class="wrap">
+
+  <!-- ================= 명함 앞면 ================= -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="logo">
+        <!-- logo.png 파일을 이 폴더에 넣으면 자동으로 표시됩니다 -->
+        <img src="logo.png" alt="올(All) 수 로고" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo-fallback',innerHTML:'올<b>수</b>'}))">
+      </div>
       <div>
-        <div class="rail-brand">김도철</div>
-        <div class="rail-role">Math Teacher × AI</div>
+        <div class="brand">올(All) 수</div>
+        <div class="brand-sub">초4 ~ 중3 수학 공부방 · 이천</div>
       </div>
-      <div class="rail-nav">
-        <div class="rail-line"><div class="rail-line-fill"></div></div>
-        <a href="index.html" class="rail-item" data-page="home"><span class="rail-dot">&bull;</span><span class="rail-label">Home</span></a>
-      <a href="story.html" class="rail-item" data-page="story"><span class="rail-dot">01</span><span class="rail-label">Story</span></a>
-      <a href="teaching.html" class="rail-item" data-page="teaching"><span class="rail-dot">02</span><span class="rail-label">Teaching</span></a>
-      <a href="skills.html" class="rail-item" data-page="skills"><span class="rail-dot">03</span><span class="rail-label">Skills</span></a>
-      <a href="work.html" class="rail-item" data-page="work"><span class="rail-dot">04</span><span class="rail-label">Work</span></a>
-      <a href="goals.html" class="rail-item" data-page="goals"><span class="rail-dot">05</span><span class="rail-label">Goals</span></a>
-      <a href="contact.html" class="rail-item" data-page="contact"><span class="rail-dot">06</span><span class="rail-label">Contact</span></a>
-      </div>
-      <div class="rail-foot">
-        <a href="mailto:sdhuen04@naver.com" class="rail-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" stroke="none"/><path d="M3 6.5 12 13 21 6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg><span>sdhuen04@naver.com</span></a>
-        <a href="tel:01028383164" class="rail-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>010-2838-3164</span></a>
-      </div>
-    </nav>
-    <div class="topbar">
-      <div class="topbar-brand">김도철</div>
-      <button class="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
-      <div class="topbar-progress"></div>
     </div>
-    <div class="scrim"></div>
-    <main class="main">
 
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="eyebrow reveal">MATH TEACHER × AI DEVELOPER</div>
-            <h1 class="h1 reveal" style="--d:.08s; font-size:clamp(1.8rem, 2.4vw, 2.8rem); line-height:1.28;">돌고 돌아,<br>다시 아이들 곁으로.</h1>
-            <p class="lede reveal" style="--d:.16s; max-width:520px; margin-top:22px;">
-              수학 강사 10년, 자영업 10년, 생산직 6년, 그리고 AI 개발. 먼 길을 돌아 다시 교실에 섰습니다.
-              이제는 AI를 다룰 줄 아는 수학 선생님 <strong style="color:var(--charcoal)">김도철</strong>입니다.
-            </p>
-            <div class="hero-actions reveal" style="--d:.24s">
-              <a href="story.html" class="btn btn-primary">여정 보러가기 <span class="btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span></a>
-              <a href="work.html" class="btn btn-ghost">프로젝트 먼저 보기</a>
-            </div>
-          </div>
-          <div class="stat-panel reveal-scale" style="--d:.2s">
-            <div>
-              <span class="stat-num" data-count="10" data-suffix="년">10년</span>
-              <span class="stat-label">수학 강사 경력</span>
-            </div>
-            <div>
-              <span class="stat-num" data-count="10" data-suffix="년">10년</span>
-              <span class="stat-label">자영업 운영 경력</span>
-            </div>
-            <div>
-              <span class="stat-num" data-count="6" data-suffix="년">6년</span>
-              <span class="stat-label">생산직 현장 경력</span>
-            </div>
-            <div>
-              <span class="stat-num" data-count="6" data-suffix="개">6개</span>
-              <span class="stat-label">AI·웹 프로젝트</span>
-            </div>
-          </div>
-        </div>
-      </section>
+    <h1 class="name">김도철<small>원장</small></h1>
+    <span class="role">수학 지도 경력 10년</span>
+    <p class="tagline slogan">올바른 수학을 지도하다.<br>올바른 공부습관을 지도하다.</p>
 
-      <section class="tight">
-        <div class="container">
-          <div class="section-head center reveal">
-            <div class="eyebrow" style="justify-content:center">THE JOURNEY</div>
-            <h2 class="h2">먼 길을 돌아, 다시 처음 자리로</h2>
-          </div>
-          <div class="journey-wrap reveal-scale">
-            <svg class="journey-svg" viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg">
-              <path class="route" d="M60,170 C96.7,156.7 206.7,91.7 280,90 C353.3,88.3 426.7,161.7 500,160 C573.3,158.3 646.7,81.7 720,80 C793.3,78.3 903.3,138.3 940,150"
-                fill="none" stroke="url(#routeGrad)" stroke-width="3" stroke-linecap="round"/>
-              <defs>
-                <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#5F7E98"/>
-                  <stop offset="100%" stop-color="#6F73CE"/>
-                </linearGradient>
-              </defs>
-              <g class="journey-node"><circle cx="60" cy="170" r="30"/><text x="60" y="176" text-anchor="middle" font-size="12.5">수학강사</text><text class="njlabel" x="60" y="222" text-anchor="middle">10년</text></g>
-              <g class="journey-node"><circle cx="280" cy="90" r="30"/><text x="280" y="96" text-anchor="middle" font-size="13">자영업</text><text class="njlabel" x="280" y="142" text-anchor="middle">10년</text></g>
-              <g class="journey-node"><circle cx="500" cy="160" r="30"/><text x="500" y="166" text-anchor="middle" font-size="13">생산직</text><text class="njlabel" x="500" y="212" text-anchor="middle">6년</text></g>
-              <g class="journey-node"><circle cx="720" cy="80" r="30"/><text x="720" y="86" text-anchor="middle" font-size="12.5">AI 개발자</text><text class="njlabel" x="720" y="132" text-anchor="middle">AI+X · 프로젝트 6개</text></g>
-              <g class="journey-node"><circle cx="940" cy="150" r="32" stroke-width="3"/><text x="940" y="150" text-anchor="middle" font-size="12" fill="#6F73CE">다시</text><text x="940" y="166" text-anchor="middle" font-size="12" fill="#6F73CE">수학강사</text><text class="njlabel" x="940" y="206" text-anchor="middle">종착역</text></g>
-              <circle class="journey-marker" cx="60" cy="170" r="9"></circle>
-            </svg>
-          </div>
-          <div class="journey-caption reveal">
-            아이를 가르치던 마음 + 자영업의 운영력 + 생산 현장의 끈기 + AI 기술 = <strong>아이들을 더 잘 키우는 수학 선생님</strong>
-          </div>
-        </div>
-      </section>
+    <nav class="quick" aria-label="빠른 연락">
+      <a href="tel:01028383164" aria-label="전화하기">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        전화
+      </a>
+      <a href="sms:01028383164" aria-label="문자 보내기">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        문자
+      </a>
+      <a href="mailto:sdhuen04@naver.com" aria-label="이메일 보내기">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        이메일
+      </a>
+      <a id="mapQuick" href="#" target="_blank" rel="noopener" aria-label="길찾기">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        길찾기
+      </a>
+    </nav>
+  </section>
 
-      <section class="bg-mist">
-        <div class="container">
-          <div class="section-head reveal">
-            <div class="eyebrow">SITE MAP</div>
-            <h2 class="h2">여정을 따라 둘러보세요</h2>
-          </div>
-          <div class="preview-grid" data-stagger="0.08">
-            <a href="story.html" class="card preview-card">
-              <div><span class="pc-num">01 · STORY</span><div class="pc-title">성장 스토리</div><p class="pc-desc">수학 강사에서 시작해 다시 수학 강사로 — 다섯 걸음의 여정과 그 안에서 얻은 것</p></div>
-              <span class="pc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span>
-            </a>
-            <a href="teaching.html" class="card preview-card">
-              <div><span class="pc-num">02 · TEACHING</span><div class="pc-title">수업 이력</div><p class="pc-desc">중등 수학 메인 10년(종합 · 입시 · 경시반) · 고1 내신 기초 3년 · 초등 · 유아 영재반 겸업</p></div>
-              <span class="pc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span>
-            </a>
-            <a href="skills.html" class="card preview-card">
-              <div><span class="pc-num">03 · SKILLS</span><div class="pc-title">두 가지 힘</div><p class="pc-desc">가르치는 힘과 운영하는 힘 — 중등 수학 10년의 수업과 학부모 소통</p></div>
-              <span class="pc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span>
-            </a>
-            <a href="work.html" class="card preview-card">
-              <div><span class="pc-num">04 · WORK</span><div class="pc-title">프로젝트</div><p class="pc-desc">OpenAPI, Flask, 생성형 AI부터 현장 운영 서비스까지 — 6개 프로젝트</p></div>
-              <span class="pc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span>
-            </a>
-            <a href="goals.html" class="card preview-card">
-              <div><span class="pc-num">05 · GOALS</span><div class="pc-title">성장 목표</div><p class="pc-desc">최종 종착역에서 이루고 싶은 것 — 아이들을 잘 키우는 일</p></div>
-              <span class="pc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span>
-            </a>
-            <a href="contact.html" class="card preview-card">
-              <div><span class="pc-num">06 · CONTACT</span><div class="pc-title">연락하기</div><p class="pc-desc">수업 · 협업 문의, 이메일로 편하게 남겨주세요</p></div>
-              <span class="pc-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg></span>
-            </a>
-          </div>
-        </div>
-      </section>
+  <!-- ================= 메인 버튼 ================= -->
+  <div class="actions">
+    <a class="btn btn-save" href="contact.vcf" download="김도철_올수.vcf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+      내 연락처에 저장하기
+    </a>
+    <a class="btn btn-kakao" id="kakaoBtn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7-.2.8-.7 2.8-.8 3.2-.1.5.2.5.4.4.2-.1 2.9-2 4-2.8.6.1 1.1.1 1.7.1 5.5 0 10-3.6 10-8s-4.5-8-10-8z"/></svg>
+      <span id="kakaoLabel">카카오톡 상담</span>
+    </a>
+  </div>
 
-      <footer class="site-footer">
-      <div class="container footer-row">
+  <!-- ================= 수업 안내 ================= -->
+  <!-- ================= 섹션 탭 ================= -->
+  <nav class="tabs" role="tablist" aria-label="명함 내용">
+    <button role="tab" id="t-info" aria-controls="panel-info" data-tab="info">수업 안내</button>
+    <button role="tab" id="t-teach" aria-controls="panel-teach" data-tab="teach">지도 방식</button>
+    <button role="tab" id="t-flow" aria-controls="panel-flow" data-tab="flow">수업 진행</button>
+    <button role="tab" id="t-more" aria-controls="panel-more" data-tab="more">더 알아보기</button>
+  </nav>
+
+  <section class="card panel" id="panel-info" role="tabpanel" aria-labelledby="t-info">
+    <h2 class="card-title"><i></i>수업 및 상담 안내</h2>
+    <dl class="info">
+      <div class="info-row"><dt>대상</dt><dd>초등 4학년 ~ 중학교 3학년</dd></div>
+      <div class="info-row"><dt>수업</dt><dd>주 2회 · 주 3회<span>주 2회: 회당 90분 · 화 · 목</span><span>주 3회: 회당 60분 · 월 · 수 · 금</span></dd></div>
+      <div class="info-row"><dt>시간</dt><dd>오후 3시부터<span>상담은 전화나 문자로 미리 약속해 주세요</span></dd></div>
+      <div class="info-row"><dt>위치</dt><dd><span id="addrText" style="display:inline;font-size:inherit;font-weight:inherit;color:inherit;margin:0"></span><span id="addrDetail"></span></dd></div>
+    </dl>
+    <a class="map-btn" id="mapBtn" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.4"/></svg>
+      네이버 지도로 길찾기
+    </a>
+  </section>
+
+  <!-- ================= 전문 지도 시스템 ================= -->
+  <section class="card panel" id="panel-teach" role="tabpanel" aria-labelledby="t-teach">
+    <h2 class="card-title"><i></i>10년 경력의 전문 수학 지도</h2>
+    <p style="font-size:13.5px;color:var(--ink-soft);margin:-5px 0 15px;line-height:1.65">
+      개념의 원리부터 서술형 · 수리논술 기초까지, 학생의 수준과 목표에 맞춰 수학적 사고의 전 과정을 지도합니다.
+    </p>
+    <div class="features">
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg></div>
+        <div><b>개념 이해와 원리 중심</b><p>공식 암기에 그치지 않고 수학적 원리와 개념을 정확히 이해해 응용할 수 있도록 지도합니다.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg></div>
+        <div><b>오답 분석과 취약점 보완</b><p>정답과 오답을 넘어 틀린 원인을 분석하고, 부족한 개념과 문제 해결 과정을 체계적으로 보완합니다.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg></div>
+        <div><b>다양한 표현을 통한 개념 이해</b><p>수직선과 수의 관계, 좌표와 도형, 수식과 그래프 등 다양한 표현을 활용해 하나의 개념을 여러 관점에서 이해하도록 지도합니다.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div>
+        <div><b>학생별 수준 맞춤 지도</b><p>학생마다 다른 이해도와 학습 속도를 고려해 진도와 학습 방법을 세밀하게 조정합니다.</p></div>
+      </div>
+      <div class="feat">
+        <div class="feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h5M8 16h8"/><path d="m15 11 2 2 4-4"/></svg></div>
+        <div><b>개념 검증 기반의 서술형 · 수리논술 기초</b><p>공식과 개념의 적용 가능성을 먼저 확인하고, 이를 바탕으로 풀이를 설계해 논리적 전개부터 최종 정답 검토까지 지도합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 실제 수업 진행 방식 ================= -->
+  <section class="card lesson-flow panel" id="panel-flow" role="tabpanel" aria-labelledby="t-flow">
+    <h2 class="card-title"><i></i>실제 수업은 이렇게 진행됩니다</h2>
+    <p class="lesson-intro">
+      강사가 다양한 방식으로 개념을 설명하고, 학생도 자신의 이해와 풀이 과정을 직접 설명하며 함께 확인합니다.
+    </p>
+
+    <div class="lesson-panel">
+      <div class="lesson-heading">
+        <span class="lesson-number">01</span>
         <div>
-          <div class="footer-name">김도철</div>
-          <div class="footer-meta">Math Teacher × AI &middot; 돌고 돌아, 다시 아이들 곁으로</div>
-        </div>
-        <div class="footer-row" style="gap:22px;">
-          <a href="mailto:sdhuen04@naver.com" class="footer-meta" style="font-weight:700;color:var(--charcoal);">sdhuen04@naver.com</a>
-          <a href="tel:01028383164" class="footer-meta" style="font-weight:700;color:var(--charcoal);">010-2838-3164</a>
-          <a href="https://pf.kakao.com/_CxlxkxeX/chat" target="_blank" rel="noopener" class="footer-meta" style="font-weight:700;color:var(--charcoal);">카카오톡 상담</a>
-          <a href="https://github.com/sdhuen01-del" target="_blank" rel="noopener" class="footer-meta" style="font-weight:700;color:var(--charcoal);">GitHub</a>
-          <a href="https://blog.naver.com/kdcm3164" target="_blank" rel="noopener" class="footer-meta" style="font-weight:700;color:var(--charcoal);">Blog</a>
-          <a href="https://www.instagram.com/kdcm3164/" target="_blank" rel="noopener" class="footer-meta" style="font-weight:700;color:var(--charcoal);">Instagram</a>
+          <b>하나의 개념을 여러 방식으로 이해</b>
+          <p>표현을 바꾸어 보며 개념의 원리와 관계를 확인합니다.</p>
         </div>
       </div>
-    </footer>
-    </main>
-    <script src="main.js"></script>
+      <ol class="lesson-steps">
+        <li><span>수직선과 수의 관계</span><small>수직선 위에서 수의 크기와 위치, 관계를 확인</small></li>
+        <li><span>좌표와 도형</span><small>좌표와 도형으로 개념 사이의 관계를 시각적으로 확인</small></li>
+        <li><span>수식과 그래프</span><small>수식과 그래프를 함께 살펴보며 개념을 시각화하고 비교</small></li>
+        <li><span>문제에 적용</span><small>이해한 원리를 새로운 문제에 활용</small></li>
+      </ol>
+    </div>
+
+    <div class="lesson-panel">
+      <div class="lesson-heading">
+        <span class="lesson-number">02</span>
+        <div>
+          <b>개념 검증부터 정답 확인까지, 서술형 · 수리논술 기초</b>
+          <p>알고 있는 개념을 근거로 풀이를 설계하고 결과까지 점검합니다.</p>
+        </div>
+      </div>
+      <ol class="lesson-steps">
+        <li><span>개념 검증</span><small>사용할 공식과 개념을 정확히 이해하고 있는지 확인</small></li>
+        <li><span>풀이 설계</span><small>검증한 개념을 바탕으로 해결 전략과 순서 구성</small></li>
+        <li><span>논리적 전개</span><small>수학적 근거를 제시하며 풀이 과정을 작성</small></li>
+        <li><span>결과 검토</span><small>논리와 계산을 점검하고 최종 정답까지 확인</small></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= 더 알아보기 ================= -->
+  <section class="card panel" id="panel-more" role="tabpanel" aria-labelledby="t-more">
+    <h2 class="card-title"><i></i>더 알아보기</h2>
+    <div class="links">
+      <a class="link" href="https://blog.naver.com/kdcm3164" target="_blank" rel="noopener">
+        <span class="link-ic ic-blog"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14.5"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20V17H6.5A2.5 2.5 0 0 0 4 19.5z"/><path d="M8 7h8M8 11h6"/></svg></span>
+        <span>네이버 블로그<span class="sub">교육 정보 · 수업 이야기</span></span><span class="arrow">›</span>
+      </a>
+      <a class="link" href="https://www.instagram.com/kdcm3164/" target="_blank" rel="noopener">
+        <span class="link-ic ic-insta"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg></span>
+        <span>인스타그램<span class="sub">@kdcm3164</span></span><span class="arrow">›</span>
+      </a>
+      <a class="link" href="https://sdhuen01-del.github.io/" target="_blank" rel="noopener">
+        <span class="link-ic ic-web"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+        <span>원장 포트폴리오<span class="sub">걸어온 길 · 직접 만든 교육 도구</span></span><span class="arrow">›</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= 공유 ================= -->
+  <div class="share">
+    <button type="button" onclick="sharePage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      명함 공유하기
+    </button>
+    <button type="button" class="light" onclick="openQR()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>
+      QR 코드 보기
+    </button>
+  </div>
+
+  <p class="foot">올(All) 수 · 김도철 원장</p>
+  <p class="legal">교습과목: 수학 · 교습비: 월 250,000원<br>(주 2회 90분 · 주 3회 60분 동일, 주 3시간)<br>개인과외교습자 신고번호 제959호</p>
+</main>
+
+<div class="overlay" id="qrOverlay" onclick="if(event.target===this)closeQR()">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+    <h3 id="qrTitle">휴대폰 카메라로 찍어 주세요</h3>
+    <p>이 명함 페이지가 바로 열립니다</p>
+    <div id="qr"><img src="qr-card.png" alt="명함 페이지 QR 코드" width="200" height="200"></div>
+    <button class="close" type="button" onclick="closeQR()">닫기</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   ✏️ 바꿀 정보는 여기만 수정하면 됩니다
+   ===================================================================== */
+const CONFIG = {
+  address: "경기 이천시 신중리로6번길 51",
+  addressDetail: "2층 202호",
+  mapQuery: "경기 이천시 신중리로6번길 51",
+  // 카카오톡 채널 개설이 끝나면 아래 따옴표 안에 채널 채팅 주소를 넣으세요.
+  // 예) "http://pf.kakao.com/_xxxxxx/chat"   — 비워 두면 '준비 중'으로 표시됩니다.
+  kakaoChatUrl: "https://pf.kakao.com/_CxlxkxeX/chat",
+  cardUrl: "https://sdhuen01-del.github.io/card/"
+};
+/* ===================================================================== */
+
+const mapUrl = "https://map.naver.com/p/search/" + encodeURIComponent(CONFIG.mapQuery);
+document.getElementById('mapBtn').href = mapUrl;
+document.getElementById('mapQuick').href = mapUrl;
+document.getElementById('addrText').textContent = CONFIG.address;
+document.getElementById('addrDetail').textContent = CONFIG.addressDetail;
+
+const kakaoBtn = document.getElementById('kakaoBtn');
+if (CONFIG.kakaoChatUrl) {
+  kakaoBtn.href = CONFIG.kakaoChatUrl;
+} else {
+  kakaoBtn.classList.add('is-off');
+  kakaoBtn.removeAttribute('href');
+  document.getElementById('kakaoLabel').innerHTML = '카카오톡 상담 <small>· 채널 준비 중</small>';
+}
+
+function pageUrl(){
+  return CONFIG.cardUrl;
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function copyLink(){
+  const url = pageUrl();
+  const done = () => showToast('명함 링크가 복사되었어요');
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(done).catch(fallback);
+  } else { fallback(); }
+  function fallback(){
+    const ta = document.createElement('textarea');
+    ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch(e){ showToast('주소창의 링크를 복사해 주세요'); }
+    ta.remove();
+  }
+}
+
+function sharePage(){
+  const data = { title: '김도철 · 올(All) 수', text: '올바른 수학을 지도하다. 올바른 공부습관을 지도하다. — 올(All) 수 김도철 원장', url: pageUrl() };
+  if (navigator.share) { navigator.share(data).catch(() => {}); }
+  else { copyLink(); }
+}
+
+function openQR(){ document.getElementById('qrOverlay').classList.add('open'); }
+function closeQR(){ document.getElementById('qrOverlay').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeQR(); });
+
+/* ---------- 섹션 탭 동작 ---------- */
+(function(){
+  const tabs=[...document.querySelectorAll('.tabs [data-tab]')];
+  const ids=tabs.map(t=>t.dataset.tab);
+  const names={}; tabs.forEach(t=>names[t.dataset.tab]=t.textContent.trim());
+  // 각 패널 아래에 이전/다음 버튼 추가
+  ids.forEach((id,i)=>{
+    const nav=document.createElement('div'); nav.className='panel-nav';
+    if(i>0){const b=document.createElement('button');b.type='button';b.textContent='‹ '+names[ids[i-1]];b.onclick=()=>show(ids[i-1],true);nav.appendChild(b);}
+    if(i<ids.length-1){const b=document.createElement('button');b.type='button';b.textContent=names[ids[i+1]]+' ›';b.onclick=()=>show(ids[i+1],true);nav.appendChild(b);}
+    document.getElementById('panel-'+id).appendChild(nav);
+  });
+  function show(id,scroll){
+    if(!ids.includes(id)) id=ids[0];
+    tabs.forEach(t=>{const on=t.dataset.tab===id;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;});
+    ids.forEach(x=>document.getElementById('panel-'+x).classList.toggle('is-active',x===id));
+    if(scroll){const bar=document.querySelector('.tabs');window.scrollTo({top:bar.getBoundingClientRect().top+window.scrollY-0,behavior:'smooth'});}
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>show(t.dataset.tab,false));
+    t.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];n.focus();show(n.dataset.tab,false);}
+    });
+  });
+  show(location.hash.slice(1),false);
+  if('scrollRestoration' in history) history.scrollRestoration='manual';
+  window.scrollTo(0,0);
+  window.addEventListener('load',()=>window.scrollTo(0,0));
+  window.addEventListener('hashchange',()=>show(location.hash.slice(1),false));
+})();
+</script>
 </body>
 </html>
