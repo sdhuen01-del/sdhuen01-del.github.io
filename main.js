@@ -44,15 +44,21 @@
     var scrim = document.querySelector(".scrim");
     if (!burger || !rail || !scrim) return;
     function close() {
+      document.documentElement.classList.remove("drawer-lock");
+      burger.setAttribute("aria-expanded", "false");
       burger.classList.remove("open");
       rail.classList.remove("drawer-open");
       scrim.classList.remove("show");
     }
+    burger.setAttribute("aria-expanded", "false");
     burger.addEventListener("click", function () {
       var isOpen = rail.classList.toggle("drawer-open");
       burger.classList.toggle("open", isOpen);
       scrim.classList.toggle("show", isOpen);
+      document.documentElement.classList.toggle("drawer-lock", isOpen);
+      burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
     scrim.addEventListener("click", close);
     document.querySelectorAll(".rail-item").forEach(function (a) {
       a.addEventListener("click", close);
@@ -159,17 +165,41 @@
     nums.forEach(function (n) { io.observe(n); });
   }
 
+
+  /* ---------- 하단 이전/다음 페이지 버튼 ---------- */
+  var NAMES = { home: "홈", story: "성장 스토리", teaching: "수업 이력", skills: "두 가지 힘", work: "프로젝트", goals: "성장 목표", contact: "연락하기" };
+  function initPager() {
+    var current = currentPage();
+    var idx = PAGES.findIndex(function (p) { return p.id === current; });
+    var footer = document.querySelector(".site-footer");
+    if (idx < 0 || !footer) return;
+    var prev = idx > 0 ? PAGES[idx - 1] : null;
+    var next = idx < PAGES.length - 1 ? PAGES[idx + 1] : PAGES[0];
+    var nav = document.createElement("nav");
+    nav.className = "pager";
+    nav.setAttribute("aria-label", "이전 · 다음 페이지");
+    var html = '<div class="container pager-row">';
+    html += prev
+      ? '<a class="pager-btn prev" href="' + prev.href + '"><span class="pager-dir">\u2039 이전</span><span class="pager-name">' + NAMES[prev.id] + '</span></a>'
+      : '<span class="pager-btn ghost" aria-hidden="true"></span>';
+    html += '<a class="pager-btn next" href="' + next.href + '"><span class="pager-dir">' + (idx === PAGES.length - 1 ? "처음으로" : "다음") + ' \u203A</span><span class="pager-name">' + NAMES[next.id] + '</span></a>';
+    html += "</div>";
+    nav.innerHTML = html;
+    footer.parentNode.insertBefore(nav, footer);
+  }
+
   /* ---------- Page transition fade ---------- */
   function initPageTransitions() {
     requestAnimationFrame(function () {
       document.body.classList.add("page-loaded");
     });
-    window.addEventListener("pageshow", function (e) {
-      if (e.persisted) {
-        document.body.classList.remove("page-exit");
-        document.body.classList.add("page-loaded");
-      }
+    window.addEventListener("pageshow", function () {
+      document.body.classList.remove("page-exit");
+      document.body.classList.add("page-loaded");
     });
+    // 아이폰 · 안드로이드 등 터치 기기에서는 페이드 지연 없이 바로 이동 (뒤로가기 스와이프 시 빈 화면 방지)
+    var isTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+    if (isTouch) return;
 
     document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
       if (link.target === "_blank") return;
@@ -223,6 +253,7 @@
     initReveal();
     initSkillBars();
     initCountUp();
+    initPager();
     initPageTransitions();
     initJourneyMarker();
   });
